@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>FlowScripts - HTML Made Easy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/jpg" href="https://i.ibb.co/xMnzd6n/imagecool-9.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>@font-face {
+  font-family: Nunitosemi;
+  src: url(Nunito-SemiBold.ttf);}
+  @font-face {
+  font-family: pagetext;
+  src: url(Montserrat-SemiBold.ttf);}
+
+  @font-face {
+  font-family: linksfont;
+  src: url(Poppins-Medium.ttf);}
+
+a{font-family: 'linksfont';}
+
+  h1{
+    font-family: 'Nunitosemi',Arial, Helvetica, sans-serif;
+  }
+p{
+  font-family: 'pagetext',Arial, Helvetica, sans-serif;
+} 
+h2{
+  font-family: 'pagetext',Arial, Helvetica, sans-serif;
+} 
+h3{
+  font-family: 'pagetext',Arial, Helvetica, sans-serif;
+} 
+h4{
+  font-family: 'pagetext',Arial, Helvetica, sans-serif;
+} 
+h5{
+  font-family: 'pagetext',Arial, Helvetica, sans-serif;
+} 
+h6{
+  font-family: 'pagetext',Arial, Helvetica, sans-serif;
+} 
+
+</style>
+    <style>
+        body {
+            margin: 0;
+         
+        }
+
+        .navbar {
+          width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(0,154,255);
+            background: linear-gradient(131deg, rgba(0,154,255,1) 0%, rgba(43,0,255,1) 22%, rgba(43,0,255,1) 100%);;
+            padding: 10px;
+            color: white;
+            position: fixed; /* or 'absolute' if preferred */ top: 0; left: 0; z-index: 9999;     
+          }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+
+        .link-desktop:hover {
+          border-top-right-radius: 20px;
+          border-top-left-radius: 20px;
+          border-bottom-right-radius: 15px;
+          border-bottom-left-radius: 15px;
+            background-color: #484eff;
+        }
+
+        .navbar .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        @media screen and (max-width: 600px) {
+            .menu {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+            }
+
+            .menu a {
+                text-align: center;
+                padding: 10px;
+                border-top: 1px solid #575757;
+            }
+
+            .menu.show {
+                display: flex;
+            }
+
+            .navbar .toggle-button {
+
+
+              
+                display: inline-block;
+                cursor: pointer;
+            }
+        }
+
+
+        .navbar .toggle-button
+        {
+          opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media screen and (min-width: 601px) {
+            .navbar .toggle-button {
+                display: none;
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .close {
+            color: #1e00ff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: rgb(70, 70, 70);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        .link-desktop{
+          opacity: 0;
+            animation: fadeIn 1.2s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand">
+          <img class="flowscripts-logo-top" style="height:50px;" src="https://i.ibb.co/KXdNMBt/Untitled5.png" alt="FlowScripts"></div>
+       <a href="https://flowscripts.github.io/account"> 
+        <div class="toggle-button">Account</div>
+      </a>  <div class="menu">
+            <a class="link-desktop" href="https://flowscripts.github.io/home">Home</a>
+          
+            <a class="link-desktop" href="https://flowscripts.github.io/templates">Templates</a>
+            <a class="link-desktop" href="https://flowscripts.github.io/account">Account</a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div style="box-shadow: 10px 4px 25px -10px rgba(0,0,0,0.88);
+        -webkit-box-shadow: 10px 4px 25px -10px rgba(0,0,0,0.88);
+        -moz-box-shadow: 10px 4px 25px -10px rgba(0,0,0,0.88);" class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1>Menu</h1>
+            <button  style="background: rgb(0,94,255);
+background: linear-gradient(131deg, rgba(0,94,255,1)
+ 0%, rgba(43,0,255,1) 12%, rgba(43,0,255,1) 100%); 
+ 
+ border-radius: 20px; color: white;
+
+ " onclick="closeModal()"><h2>Close</h2></button>
+           <!-- Add your menu items here -->
+
+        </div>
+    </div>
+
+
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .background-image {
+            width: 100%;
+            height: 150px;
+            background-image: url('image (10).png');
+            background-size: cover;
+            background-position: center;
+
+            
+        }
+    </style>
+
+</head>
+
+    <div class="background-image">
+       
+    </div>
+
+
+
+
+
+
+<style>
+
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create a column layout with Flexbox */
+    .row {
+      display: flex;
+    }
+    
+    /* Left column (menu) */
+    .left {
+      flex: 45%;
+      padding: 15px 0;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    
+    .left h2 {
+      padding-left: 8px;
+    }
+    
+    /* Right column (page content) */
+    .right {
+      flex: 55%;
+      padding: 15px;
+    }
+    
+    /* Style the search box */
+    #mySearch {
+      width: 100%;
+      border-radius: 20px;
+      font-size: 18px;
+      padding: 11px;
+      border: 1px solid #ddd;
+    }
+    
+    /* Style the navigation menu inside the left column */
+    #myMenu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #myMenu li a {
+      padding: 12px;
+      text-decoration: none;
+      color: black;
+      display: block
+    }
+    
+    #myMenu li a:hover {
+        border-radius: 14px;
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(183,188,228,1) 100%);;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <form>
+            <button class="back-menu1" type="submit" formaction="https://flowscripts.github.io"><h3>← Back Home</h3></button>
+            </form>
+ 
+        <style>
+
+            .back-menu1{
+            padding: 2px;
+            background-color: #1e00ff;
+            color: white;
+            border-radius: 20px;
+            border-color: #fefefe00;
+            
+            }
+            .back-menu1:hover{
+                background-color: #5640ff; 
+            }
+            </style>
+ 
+     
+      <style>   /* styles.css */
+
+
+        .fade-in-text {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in-text2 {
+            opacity: 0;
+            animation: fadeIn 1.2s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .fade-in-text3 {
+            opacity: 0;
+            animation: fadeIn 3s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+       
+        
+        .fade-in-text4 {
+            opacity: 0;
+            animation: fadeIn 3.8s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .flowscripts-logo-top {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        
+        
+        </style>
+
+
+<style>.h_container{
+    background-color: #cac7c7;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgb(0, 0, 0);
+    display: inline-block;
+    width:35px;
+    height:35px;
+    text-align:center;
+    line-height:45px;
+
+}
+#heart{
+    font-size: 25px;
+}
+#heart:hover{
+ 
+    color:red;
+}</style>
+<script src="https://kit.fontawesome.com/3929e16ef5.js" crossorigin="anonymous"></script>
+<script src="{% static 'network/functions.js' %}"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+  
+              <style>
+                  .code-container {
+                 
+                      position: relative;
+                      margin: 20px 0;
+                  }
+                  .copy-btn {
+                    border-radius: 10px;
+                    
+                      top: 10px;
+                      right: 10px;
+                      padding: 5px 10px;
+                      background-color: #3700ff;
+                      color: white;
+                      border: none;
+                      cursor: pointer;
+                  }
+                  .copy-btn:hover
+                  {
+                    background-color: #6136ff;
+                  }
+                  pre {
+                    width: 95%;
+                      background-color: #000000;
+                      color: #00ff08;
+                      padding: 20px;
+                      overflow-x: auto;
+                  }
+
+
+
+              </style>
+          </head>
+          <body>
+            <!--HEADER-TEXT-->
+<br>
+            <img style=" width: 200px;" src="https://i.ibb.co/nkb3PY1/html5-logo-devextreme-multi-purpose-controls-html-javascript-3.png">
+              <h1 class="fade-in-text">What is HTML?</h1>
+              <p class="fade-in-text" style="padding-left: 5px;">HTML stands for Hypertext Markup Language, and is used to create about 96% of all sites. Even FlowScripts (this website) is coded with HTML!
+                <br>Everything is made up of elements, they include a <b style="color: darkgreen;"> start tag</b>, <b style="color: rgb(216, 1, 1);">content</b>, and an<b style="color: darkgreen;"> end tag.</b>
+<h2 style="padding-left: 10px;" class="fade-in-text2">An Element:</h2>
+
+<h2 class="fade-in-text2"><b style="color: #1e00ff;">&lt;<b style="color: darkgreen;">p</b>&gt;<b style="color: rgb(255, 0, 0);">Hello World</b>&lt;<b style="color: darkgreen;">/p</b>&gt;</b>
+</h2>
+
+<p class="fade-in-text2" style="color: black;">The text saying "<b style="color: rgb(255, 0, 0);">Hello World</b>" will be visible on your website.<p class="fade-in-text2" style="color: black;">However, the tags <b style="color: #1e00ff;">&lt;<b style="color: darkgreen;">p</b>&gt;<b style="color: rgb(0, 0, 0);">, and</b>&lt;<b style="color: darkgreen;">/p</b>&gt;</b>, will be hidden.
+</p></p>
+           <P class="fade-in-text2" style="color: rgb(203, 0, 0); margin-left: 16px;">! Don't forget the forward slash in the end tag !</P>
+           
+            
+
+<h5> </h5>
+
+
+
+<a href="https://flowscripts.github.io/login/">
+
+              <div class="h_container">
+                <i id="heart" class="far fa-heart"></i>
+            </div>
+
+        </a>
+       <h2>CSS and JavaScript </h2>
+       <p>CSS  (Cascading Style Sheets), is used to style your website; it can change the color of text, or even animate objects.
+        <br>JavaScript is used to make your site work, example: if you click on a button, it will show a pop-up.
+       </p> 
+ 
+      <style>
+          .container {
+              display: flex;
+          }
+  
+          .box {
+              flex: 1;
+              padding: 10px;
+              border: 1px solid #000;
+              margin: 5px;
+              text-align: center;
+              border-radius: 5px;
+          }
+  
+          @media screen and (max-width: 800px) {
+              .container {
+                  flex-direction: column;
+              }
+          }
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <div class="box"><h3>HTML</h3></div>
+          <div class="box"><h3>HTML + CSS</h3></div>
+          <div class="box"><h3>HTML + CSS + JavaScript</h3></div>
+      </div>
+
+  
+
+        
+        </div>
+        
+    </div>
+
+
+
+        <style>
+            .container23 {
+                display: flex;
+                align-items: center; /* Vertically center the content */
+            }
+            .container img {
+                margin-right: 10px; /* Adds space between the image and text */
+            }
+        </style>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--END OF PAGE HEADER-->
+
+
+
+
+<style>
+
+    .kot-567
+    {
+      background-color: #ddd;
+    }
+  </style> 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="kot-567">
+    
+  <br>
+    
+  <h3>© FlowScripts Copyright</h3>
+        
+  <style>
+    .red-link {
+        color: rgb(107, 107, 107);
+    }
+    .purple-link {
+      text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+  </style>
+  </head>
+  <body>
+  <a href="https://flowscripts.github.io/terms" class="red-link">Terms of Service</a>
+  
+  <br>
+  <br>
+  <br>
+  </div>
+  
+  
+  
+  
+  <body>
+   
+  
+  
+  
+  </body>
+  </html>
+  
