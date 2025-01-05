@@ -199,8 +199,9 @@ h6{
         -webkit-box-shadow: 10px 4px 25px -10px rgba(0,0,0,0.88);
         -moz-box-shadow: 10px 4px 25px -10px rgba(0,0,0,0.88);" class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h1>Menu</h1>
-            <button  style="background: rgb(0,94,255);
+            <h3>Sample Text</h3>
+         <style>.example-3:hover{background-color: #624eff;}</style>
+            <button class="example-3"  style="background: rgb(0,94,255);
 background: linear-gradient(131deg, rgba(0,94,255,1)
  0%, rgba(43,0,255,1) 12%, rgba(43,0,255,1) 100%); 
  
@@ -469,7 +470,7 @@ background: linear-gradient(131deg, rgba(0,94,255,1)
 <br>
             <img style=" width: 200px;" src="https://i.ibb.co/nkb3PY1/html5-logo-devextreme-multi-purpose-controls-html-javascript-3.png">
               <h1 class="fade-in-text">What is HTML?</h1>
-              <p class="fade-in-text" style="padding-left: 5px;">HTML stands for Hypertext Markup Language, and is used to create about 96% of all sites. Even FlowScripts (this website) is coded with HTML!
+              <p class="fade-in-text" style="padding-left: 5px;">HTML stands for Hypertext Markup Language, and is used to create about 96% of all sites. Even FlowScripts (this website) is coded in HTML!
                 <br>Everything is made up of elements, they include a <b style="color: darkgreen;"> start tag</b>, <b style="color: rgb(216, 1, 1);">content</b>, and an<b style="color: darkgreen;"> end tag.</b>
 <h2 style="padding-left: 10px;" class="fade-in-text2">An Element:</h2>
 
@@ -521,12 +522,111 @@ background: linear-gradient(131deg, rgba(0,94,255,1)
   </head>
   <body>
       <div class="container">
-          <div class="box"><h3>HTML</h3></div>
-          <div class="box"><h3>HTML + CSS</h3></div>
-          <div class="box"><h3>HTML + CSS + JavaScript</h3></div>
+          <div class="box"><h3>HTML</h3>
+<button>Click Me</button>
+        </div>
+          <div class="box"><h3>HTML + CSS</h3>
+            <button class="example-2">Click Me</button></div>
+          <div class="box"><h3>HTML + CSS + JavaScript</h3>
+        
+        
+        
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    .modal {
+                        display: none;
+                        position: fixed;
+                        z-index: 1;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        overflow: auto;
+                        background-color: rgba(0, 0, 0, 0.5); /* Black with transparency */
+                    }
+                    .modal-content {
+                        position: relative;
+                        margin: 15% auto;
+                        padding: 20px;
+                        background-color: white;
+                        border-radius: 5px;
+                        width: 80%;
+                        max-width: 500px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                        animation: fadeIn 0.5s;
+                    }
+                    .close {
+                        color: #aaa;
+                        float: right;
+                        font-size: 28px;
+                        font-weight: bold;
+                    }
+                    .close:hover,
+                    .close:focus {
+                        color: black;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                </style>
+            </head>
+            <body>
+            
+            <button class="example-2" id="openModalBtn">Click Me</button>
+            
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+   
+                </div>
+            </div>
+            
+            <script>
+                const modal = document.getElementById("myModal");
+                const btn = document.getElementById("openModalBtn");
+                const span = document.getElementsByClassName("close")[0];
+            
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+            
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+            
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
+            
+      
+        
+        
+        </div>
       </div>
 
-  
+  <style>
+.example-2{
+    font-size: 23px;
+    background-color: #1e00ff
+    ;padding: 6px;
+    border-radius: 8px;
+    border-width: 0px;
+    color: white;
+}
+.example-2:hover{
+
+    background-color: #462dff;
+}
+
+  </style>
 
         
         </div>
@@ -575,14 +675,17 @@ background: linear-gradient(131deg, rgba(0,94,255,1)
   
   
   
+  <br><br>
   
   
   
+  <form>
+    <button class="back-menu1" type="submit" formaction="https://flowscripts.github.io/element-basictext"><h3>Start Coding!</h3></button>
+    </form>
   
   
   
-  
-  
+  <br><br>
   <div class="kot-567">
     
   <br>
